@@ -607,7 +607,7 @@ module.exports = {
 // https://www.npmjs.com/package/aliyun-oss-webpack-plugin
 const AliyunOSSPlugin = require("aliyun-oss-webpack-plugin")
 const ossConfig = require('./oss.config.js')
-...
+
 chainWebpack(config) {
   config
     .when(process.env.NODE_ENV !== 'development',
