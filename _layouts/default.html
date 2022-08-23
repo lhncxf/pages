@@ -18,9 +18,10 @@
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-      {% if site.github.is_project_page %}
+      <!-- {% if site.github.is_project_page %}
         <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
-      {% endif %}
+      {% endif %} -->
+      <a href="/" class="btn">Back To Index</a>
       {% if site.show_downloads %}
         <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
@@ -32,10 +33,6 @@
       <div class="main-content-preview" style="padding: 1em 0; background: #f5f5f5; border-radius: 10px;">
         <div style="text-align: center; font-size: 20px">目录</div>
         {% include toc.html html=content %}
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 1em; margin-top: 15px">
-          <a href="../">返回上一页</a>
-          <a href="/">回到首页</a>
-        </div>
       </div>
       {% endif %}
       {{ content }}
