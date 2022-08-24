@@ -19,6 +19,7 @@
       padding: 15px;
       background: #f5f5f5;
       font-size: 14px;
+      display: none;
     }
 
     .main-content-preview .preview-content ul {
@@ -29,6 +30,10 @@
       font-size: 16px;
       cursor: pointer;
       text-align: center;
+    }
+
+    .preview-btn:hover+.main-content-preview {
+      display: block;
     }
   </style>
 </head>
@@ -62,7 +67,7 @@
         </div>
       </div>
     </div>
-    
+
     {% endif %}
     {{ content }}
 
