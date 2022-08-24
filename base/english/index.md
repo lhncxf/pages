@@ -6,6 +6,7 @@ title: Words And Sentences
 #### linearly
 
 > 线性地
+
 #### specific
 
 > 具体的
