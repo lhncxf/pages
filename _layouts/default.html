@@ -74,7 +74,7 @@
   </header>
 
   <main id="content" class="main-content" role="main">
-    {% if page.preview %}
+    {% unless page.home %}
     <div class="preview-wrap">
       <div class="preview-btn">目录</div>
       <div class="preview-content">
@@ -83,8 +83,7 @@
         </div>
       </div>
     </div>
-
-    {% endif %}
+    {% endunless %}
     {{ content }}
 
     <!-- <footer class="site-footer">

@@ -1,6 +1,5 @@
 ---
 description: 博观而约取，厚积而薄发。
-preview: true
 ---
 # 前端知识体系
 ## 必备
