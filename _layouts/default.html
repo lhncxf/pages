@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
+    <link rel="stylesheet" href="./index.css">
   </head>
   <body style="user-select: none;">
     <a id="skip-to-content" href="#content">Skip to the content.</a>
@@ -32,9 +33,11 @@
 
     <main id="content" class="main-content" role="main">
       {% if page.preview %}
-      <div class="main-content-preview" style="padding: 1em 0; background: #f5f5f5; border-radius: 10px;">
-        <div style="text-align: center; font-size: 20px">目录</div>
-        {% include toc.html html=content %}
+      <div class="main-content-preview">
+        <div class="preview-title">目录</div>
+        <div class="preview-content hide" id="previewContent">
+          {% include toc.html html=content %}
+        </div>
       </div>
       {% endif %}
       {{ content }}
@@ -47,4 +50,5 @@
       </footer> -->
     </main>
   </body>
+  <script src="./index.js"></script>
 </html>
