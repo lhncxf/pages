@@ -16,18 +16,33 @@
   <style>
     /* 目录 */
     .main-content-preview {
-      padding: 10px 0;
+      padding: 10px 20px;
       background: #f5f5f5;
       border-radius: 10px;
+      font-size: 12px;
+      height: 300px;
+      width: 200px;
+      overflow-y: auto;
     }
+
+    .main-content-preview .preview-content>ul,
+    li {
+      padding: 0;
+    }
+
     .preview-title {
       font-size: 20px;
       cursor: pointer;
       text-align: center;
     }
-    .preview-content {
-      max-height: 200px;
-      overflow-y: auto;
+
+    @media screen and (min-width: 768px) {
+      .main-content-preview {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        margin-top: -150px;
+      }
     }
   </style>
 </head>
