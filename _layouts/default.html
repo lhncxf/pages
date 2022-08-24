@@ -21,11 +21,14 @@
       border-radius: 10px;
       font-size: 12px;
       height: 300px;
-      width: 200px;
       overflow-y: auto;
+      position: fixed;
+      top: 50%;
+      left: 0;
+      margin-top: -150px;
     }
 
-    .main-content-preview .preview-content>ul,
+    .main-content-preview .preview-content ul,
     li {
       padding: 0;
     }
@@ -34,15 +37,6 @@
       font-size: 20px;
       cursor: pointer;
       text-align: center;
-    }
-
-    @media screen and (min-width: 768px) {
-      .main-content-preview {
-        position: fixed;
-        top: 50%;
-        left: 0;
-        margin-top: -150px;
-      }
     }
   </style>
 </head>
