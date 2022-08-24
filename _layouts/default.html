@@ -30,6 +30,13 @@
       font-size: 20px;
       cursor: pointer;
     }
+
+    .preview-title .arrow-icon {
+      margin-left: 10px;
+    }
+    .arrow-icon.rotate {
+      transform: rotate(180deg);
+    }
   </style>
 </head>
 
@@ -55,7 +62,7 @@
   <main id="content" class="main-content" role="main">
     {% if page.preview %}
     <div class="main-content-preview">
-      <div class="preview-title">目录▼</div>
+      <div class="preview-title" id="previewTitle">目录<span class="arrow-icon" id="arrowIcon">▼</span></div>
       <div class="preview-content hide" id="previewContent">
         {% include toc.html html=content %}
       </div>
@@ -89,8 +96,9 @@
   }
 
 
-  document.querySelector('.preview-title').addEventListener('click', function () {
+  document.getElementById('previewTitle').addEventListener('click', function () {
     toggleClass(document.getElementById('previewContent'), 'hide')
+    toggleClass(document.getElementById('arrowIcon'), 'hide')
   }, false)
 </script>
 
