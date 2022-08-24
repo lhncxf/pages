@@ -15,21 +15,30 @@
   {% include head-custom.html %}
   <style>
     /* 目录 */
-    .preview-content {
-      padding: 15px;
+    .preview-wrap {
+      position: fixed;
+      top: 0;
+      right: 0;
+      max-height: 60%;
+      overflow-y: auto;
       background: #f5f5f5;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .preview-btn {
+      padding: 10px;
       font-size: 14px;
+    }
+
+    .preview-content {
+      padding: 0 15px;
+      font-size: 12px;
       display: none;
     }
 
     .preview-content .preview-content ul {
       padding-inline-start: 10px;
-    }
-
-    .preview-title {
-      font-size: 16px;
-      cursor: pointer;
-      text-align: center;
     }
 
     .preview-btn:hover+.preview-content {
@@ -38,6 +47,9 @@
 
     .preview-wrap:hover .preview-content {
       display: block;
+    }
+    .preview-wrap:hover .preview-btn {
+      text-align: center;
     }
   </style>
 </head>
