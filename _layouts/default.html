@@ -42,13 +42,12 @@
     <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
     {% endif %}
   </header>
-
+  {% unless page.home %}
+  <div class="preview-content">
+    {% include toc.html html=content %}
+  </div>
+  {% endunless %}
   <main id="content" class="main-content" role="main">
-    {% unless page.home %}
-    <div class="preview-content">
-      {% include toc.html html=content %}
-    </div>
-    {% endunless %}
     {{ content }}
     {% if page.home %}
     <footer class="site-footer">
