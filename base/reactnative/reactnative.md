@@ -1,6 +1,8 @@
 # React Native 官方文档阅读笔记
 
-## 基础篇
+## 文档
+
+### 基础篇
 
 - 滚动视图使用：ScrollView
 - 长列表使用：FlatList、SectionList
@@ -17,7 +19,7 @@
     - *.ios.js | *.android.js
     - *.native.js | *.js
     - 引用时不需要写明后缀名
-## 开发流程篇
+### 开发流程篇
 
 - 链接原生代码
   ```shell
@@ -34,7 +36,7 @@
   # 指定参数
   npx react-native upgrade 0.61.0-rc.0
   ```
-## 网络连接
+### 网络连接
 - 使用fetch
   - [https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - 内置的[XMLHttpRequest API](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
@@ -45,7 +47,7 @@
   ```javascript
   const ws = new WebSocket('ws://host.com/path');
   ```
-## 设计
+### 设计
 - 使用style属性定制样式，支持接受对象或数组
 - 使用`StyleSheet.create`集中定义组件的样式
 - 尺寸
@@ -57,7 +59,7 @@
 - 图片`<Image source={require('./my-icon.png')} />`
   - `borderTopLeftRadius、borderTopRightRadius、borderBottomLeftRadius、borderBottomRightRadius`这些边框圆角样式在IOS图片上不支持
 
-## 交互
+### 交互
 - 点击事件
   - onPress 点击操作
   - onLongPress 长按操作
@@ -70,3 +72,5 @@
     - Animated
   - 响应者的生命周期
     - [https://reactnative.cn/docs/gesture-responder-system](https://reactnative.cn/docs/gesture-responder-system)
+
+### 性能调优
