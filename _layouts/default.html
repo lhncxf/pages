@@ -16,7 +16,17 @@
   <style>
     /* 目录 */
     ul {
-      padding-left: 20px;
+      padding-left: 2em;
+    }
+
+    .preview-content {
+      padding-bottom: 1em;
+      border-bottom: 1px px solid #ccc;
+    }
+    h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+      width: 1em;
+      height: 1em;
+      content: 'top';
     }
   </style>
 </head>
@@ -43,7 +53,7 @@
   <main id="content" class="main-content" role="main">
     {% unless page.home %}
     <div class="preview-content">
-      <h4>目录</h4>
+      <h2>目录</h2>
       {% include toc.html html=content %}
     </div>
     {% endunless %}
