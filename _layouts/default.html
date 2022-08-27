@@ -24,23 +24,32 @@
       border-bottom: 1px solid #ccc;
     }
 
-    .main-content h2::after,
-    .main-content h3::after,
-    .main-content h4::after,
-    .main-content h5::after,
-    .main-content h6::after {
+    .main-content h2,
+    .main-content h3,
+    .main-content h4,
+    .main-content h5,
+    .main-content h6 {
+      cursor: pointer;
+    }
+
+
+    .main-content h2::before,
+    .main-content h3::before,
+    .main-content h4::before,
+    .main-content h5::before,
+    .main-content h6::before {
       font-size: 12px;
-      content: '【回到顶部】';
+      content: '【↑】';
       margin-left: 5px;
       cursor: pointer;
       opacity: 0;
     }
 
-    .main-content h2:hover::after,
-    .main-content h3:hover::after,
-    .main-content h4:hover::after,
-    .main-content h5:hover::after,
-    .main-content h6:hover::after {
+    .main-content h2:hover::before,
+    .main-content h3:hover::before,
+    .main-content h4:hover::before,
+    .main-content h5:hover::before,
+    .main-content h6:hover::before {
       opacity: 1;
     }
   </style>
