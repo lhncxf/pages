@@ -23,15 +23,11 @@
       padding-bottom: 1em;
       border-bottom: 1px solid #ccc;
     }
-    h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
+    .main-content h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
       width: 1em;
       height: 1em;
       content: '▲';
       cursor: pointer;
-      display: none;
-    }
-    h1:hover>h1::after, h2:hover>h2::after, h3:hover>h3::after, h4:hover>h4::after, h5:hover>h5::after, h6:hover>h6::after {
-      display: block;
     }
   </style>
 </head>
