@@ -73,4 +73,13 @@
   - 响应者的生命周期
     - [https://reactnative.cn/docs/gesture-responder-system](https://reactnative.cn/docs/gesture-responder-system)
 
-### 性能调优
+### 性能调优等内容参阅官网
+
+## 组件
+
+### 核心组件和API
+
+#### ActivityIndicator
+
+> 加载中
+
