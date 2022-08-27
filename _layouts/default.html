@@ -23,11 +23,20 @@
       padding-bottom: 1em;
       border-bottom: 1px solid #ccc;
     }
-    .main-content h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
+
+    .main-content h2::after,
+    .main-content h3::after,
+    .main-content h4::after,
+    .main-content h5::after,
+    .main-content h6::after {
       width: 1em;
       height: 1em;
       content: '▲';
       cursor: pointer;
+      opacity: 0;
+    }
+    .main-content h2:hover>.main-content h2::after {
+      opacity: 1;
     }
   </style>
 </head>
