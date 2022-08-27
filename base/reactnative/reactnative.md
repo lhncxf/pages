@@ -16,8 +16,8 @@
       - android 类型是数字 指示Android的api level
       - ios 类型是字符串 指示ios的系统版本
   - 特定平台扩展名
-    - *.ios.js | *.android.js
-    - *.native.js | *.js
+    - *.ios.js、*.android.js
+    - *.native.js、*.js
     - 引用时不需要写明后缀名
 ### 开发流程篇
 
