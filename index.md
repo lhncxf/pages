@@ -10,10 +10,8 @@ home: true
 
 ## 知识库笔记
 
-### [总览](./base/index.md)
+### [前端知识体系总览](./base/index.md)
 
 ### [英文单词、语句收集（参照Google Translate）](./base/english/index.md)
 
-### [React Native官方文档笔记](./base/reactnative/reactnative.md)
-
-### [React Native Navigation官方文档笔记](./base/reactnative/reactnativenavigation.md)
+### [React Native 实战记录](./base/reactnative/reactnative.md)
