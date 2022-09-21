@@ -648,3 +648,209 @@ chainWebpack(config) {
 }
 
 ```
+
+## React Native 上传图片组件
+```javascript
+import { Button, Icon, Image } from "@rneui/themed";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { getAliyunAuthorization } from '../api';
+import { createUniqueString } from "../utils";
+import theme from "../utils/theme";
+import ImageCropPicker from "react-native-image-crop-picker";
+import AliyunOSS from 'aliyun-oss-react-native';
+import Toast from "react-native-root-toast";
+
+AliyunOSS.enableDevMode();
+
+const configuration = {
+  maxRetryCount: 3,
+  timeoutIntervalForRequest: 30,
+  timeoutIntervalForResource: 24 * 60 * 60
+};
+const endPoint = 'xxx.aliyuncs.com'
+const bucketName = 'xxxxx'
+export default class UploadImage extends React.Component {
+  constructor(props) {
+    super(props)
+    let arr = []
+    // 如果有需要回显的图片先处理成可展示图片的数组
+    if (typeof props.value === 'string' && props.value) {
+      arr = props.value.split(',').map(uri => ({ uri }))
+    }
+    this.state = {
+      imageList: arr || [], // 图片列表
+      moduleName: props.moduleName || 'xxxx', // 图片存放的文件夹名称 按模块存放图片文件，建议传
+      limit: props.limit || 1, // 最多上传数量
+      multiple: props.multiple || false, // 是否可以多选图片
+      openType: props.openType || 'picker', // 选择图片方式 picker = 通过相册, camera = 通过相机
+      disabled: props.disabled || false, // 禁用上传
+      securityToken: null, // 阿里云初始化参数
+      accessKeyId: null, // 阿里云初始化参数
+      accessKeySecret: null, // 阿里云初始化参数
+      expiration: null, // 阿里云初始化参数
+      uploading: false, // 是否处在上传中
+      value: props.value || '' // 需要回显的图片，字符串：多张图片用逗号分隔
+    }
+  }
+
+  // 图片数组变化传到父组件
+  uploadSuccess() {
+    if (this.props.onChange) {
+      // 在外面传入一个onChange函数进来在父组件获取当前上传成功的图片
+      // 直接转换为多张图片用逗号连接的字符串给父组件，可以直接赋值
+      const str = this.state.imageList.map(img => img.uri).join(',')
+      this.props.onChange(str)
+    }
+  }
+
+  // 上传阿里云
+  async uploadImage(files) {
+    await this.initAliyunOSS();
+    return Promise.all(files.map(f => this.singleUpload(f)));
+  }
+
+  // 初始化阿里云上传控件
+  async initAliyunOSS() {
+    const { securityToken, accessKeyId, accessKeySecret, expiration } = this.state
+    if (!securityToken || new Date(expiration).getTime() <= Date.now()) {
+      const r = await getAliyunAuthorization();
+      const response = r.data;
+      AliyunOSS.initWithSecurityToken(response.securityToken, response.accessKeyId, response.accessKeySecret, endPoint, configuration)
+      this.setState({
+        securityToken: response.securityToken,
+        accessKeyId: response.accessKeyId,
+        accessKeySecret: response.accessKeySecret,
+        expiration: response.expiration
+      });
+    } else {
+      AliyunOSS.initWithSecurityToken(securityToken, accessKeyId, accessKeySecret, endPoint, configuration);
+    }
+  }
+
+  // 单张图片上传
+  singleUpload(file) {
+    const { moduleName } = this.state;
+    const obj = file.filename;
+    const fileExtention = obj.substring(obj.lastIndexOf('.') + 1);
+    const fileName = [createUniqueString(), fileExtention].join('.');
+    return AliyunOSS.asyncUpload(bucketName, `${moduleName}/${fileName}`, file.sourceURL).then(r => {
+      const uri = `https://${bucketName}.${endPoint}/${moduleName}/${fileName}`;
+      return Promise.resolve({ uri });
+    }).catch(e => {
+      return Promise.reject('fail');
+    })
+  }
+
+  // 删除图片
+  onDeleteImage(file) {
+    const arr = this.state.imageList.filter(f => f.uri !== file.uri)
+    this.setState({
+      imageList: arr
+    });
+    Toast.show('删除成功');
+    this.uploadSuccess();
+  }
+
+  handleButtonPress() {
+    const { openType, multiple, disabled, uploading, limit, imageList } = this.state
+    // 禁用或上传中的状态点击按钮不操作
+    if (disabled || uploading) {
+      return false
+    }
+    // TODO：选择相册方式支持多种，目前只用这一种，代码为后续预留
+    if (openType === 'picker') {
+      ImageCropPicker.openPicker({
+        multiple,
+      }).then(images => {
+        const imgs = multiple ? images : [images]
+        const length = imgs.length + imageList.length;
+        if (length > limit) {
+          Toast.show(`最多上传${limit}张图片`)
+          return Promise.resolve();
+        }
+        this.setState({
+          uploading: true
+        });
+        this.uploadImage(imgs).then(r => {
+          Toast.show('图片上传成功');
+          this.setState({
+            uploading: false,
+            imageList: this.state.imageList.concat(r)
+          });
+          this.uploadSuccess();
+        });
+      })
+    }
+  }
+
+  render() {
+    const { imageList, limit, disabled } = this.state
+    return (
+      <View style={styles.uploadContainer}>
+        {
+          imageList.map(image => (
+            <View style={styles.uploadedWrap} key={image.uri}>
+              <Image source={image} resizeMode="cover" style={styles.uploadedImage} />
+              {
+                disabled ? <></> : <Icon onPress={() => this.onDeleteImage(image)} containerStyle={styles.uploadedIcon} color={theme.colors.white} name="closecircleo" type="antdesign" size={20} />
+              }
+            </View>
+          ))
+        }
+        {
+          imageList.length < limit ?
+            <Button
+              onPress={() => this.handleButtonPress()}
+              disabled={disabled}
+              type="outline"
+              title="上传图片"
+              buttonStyle={styles.uploadBtn}
+              titleStyle={styles.uploadBtnTitle}
+              icon={() =>
+                <Icon containerStyle={{ marginRight: 5 }} name='clouduploado' type='antdesign' color={theme.colors.primary} />
+              } />
+            :
+            <></>
+        }
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  uploadContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  uploadBtn: {
+    width: 100,
+    height: 100,
+    borderStyle: 'dashed',
+    backgroundColor: 'rgba(255, 149, 0, 0.06)'
+  },
+  uploadBtnTitle: {
+    fontSize: 12,
+    color: theme.colors.secondary
+  },
+  uploadedImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 8
+  },
+  uploadedWrap: {
+    width: 100,
+    height: 100,
+    borderRadius: 8,
+    position: 'relative',
+    marginRight: 10,
+    marginBottom: 10
+  },
+  uploadedIcon: {
+    position: 'absolute',
+    right: 5,
+    top: 2,
+    zIndex: 3
+  }
+})
+```
