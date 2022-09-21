@@ -597,6 +597,8 @@ rgbToHex(0, 51, 255);
 
 ## vue-cli 发布静态资源到阿里云oss存储，静态资源全走cdn
 - oss.config.js
+
+
 ```javascript
 module.exports = {
     accessKeyId: 'xxxxx',
@@ -606,6 +608,7 @@ module.exports = {
 }
 ```
 - vue.config.js
+
 ```javascript
 // https://www.npmjs.com/package/aliyun-oss-webpack-plugin
 const AliyunOSSPlugin = require("aliyun-oss-webpack-plugin")
