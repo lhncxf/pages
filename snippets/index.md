@@ -607,6 +607,7 @@ module.exports = {
     bucket: 'xxxxx'
 }
 ```
+
 - vue.config.js
 
 ```javascript
