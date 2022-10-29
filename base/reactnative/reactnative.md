@@ -75,7 +75,7 @@
   ```
 #### 修改应用名称和图标
 -  修改：`android/app/src/main/res/values/strings.xml`
-  ``` html
+  ```html
   <resources>
   -    <string name="app_name">test</string>
   +    <string name="app_name">测试程序</string>   
