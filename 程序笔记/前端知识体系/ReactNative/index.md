@@ -74,13 +74,14 @@ cd android
 ./gradlew assembleRelease
 ```
 #### 修改应用名称和图标
--  修改：`android/app/src/main/res/values/strings.xml`
+-  修改：android/app/src/main/res/values/strings.xml
 ```html
 <resources>
 -    <string name="app_name">test</string>
 +    <string name="app_name">测试程序</string>   
 </resources>
 ```
+
 - 生成好图标文件后替换`android/app/src/main/res`对应文件
 
 ### IOS
