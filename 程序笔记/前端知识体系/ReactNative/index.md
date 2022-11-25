@@ -75,6 +75,8 @@ cd android
 ```
 #### 修改应用名称和图标
 -  修改：android/app/src/main/res/values/strings.xml
+
+
 ```html
 <resources>
 -    <string name="app_name">test</string>
