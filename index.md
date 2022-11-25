@@ -4,14 +4,10 @@ home: true
 ---
 # 欢迎来到我的个人网站
 
-## [我的个人简历](./resume/index.md)
+## [我的个人简历](./个人简历/index.md)
 
-## [代码片段收集](./snippets/index.md)
+## [代码片段收集](./程序笔记/代码片段/index.md)
 
 ## 知识库笔记
 
-<!-- ### [前端知识体系总览](./base/index.md) -->
-
-### [英文单词、语句收集（参照Google Translate）](./base/english/index.md)
-
-<!-- ### [React Native 实战记录](./base/reactnative/reactnative.md) -->
+### [英文单词、语句收集（参照Google Translate）](./英语笔记/index.md)

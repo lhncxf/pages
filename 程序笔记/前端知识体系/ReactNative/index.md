@@ -88,7 +88,7 @@ cd android
 #### 打包流程
 - 第一步：首先在package.json里设置bundle-ios命令，在package.json里的scripts添加如下代码
 ```json
-"bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/index.jsbundle --assets-dest ./ios/bundle"
+"bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.js --platform ios --dev false --bundle-output ./ios/bundle/main.jsbundle --assets-dest ./ios/bundle"
 ```
 - 第二步：在ios文件目录下创建bundle文件夹
 ```shell
@@ -111,3 +111,11 @@ yarn bundle-ios
 ``` shell
 jarsigner -verbose -keystore [你签名的位置] -signedjar [要生成的签名包] [未签名的包] [你签名的alias]
 ```
+
+## 热更新方案 Code Push
+
+https://github.com/microsoft/react-native-code-push
+
+https://learn.microsoft.com/en-us/appcenter/cli/
+
+按步骤操作
