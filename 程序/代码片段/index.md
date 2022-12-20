@@ -1024,19 +1024,3 @@ const styles = StyleSheet.create({
   }
 });
 ```
-
-
-
-```LaTeX
-\begin{equation}
-SSIM(x,y)=\frac{\left(2\mu_x\mu_y+c1\right)\left(\sigma_{xy}+c2\right)}
-{\left(\mu_x^2+\mu_y^2+c1\right)\left(\sigma_x^2+\sigma_y^2+c2\right)}
-\end{equation}
- 
-Where $\mu_x$ is the average of x, $\mu_y$ is the average of y, $\sigma_x^2$ is the variance of x, $\sigma_y^2$ is the variance of y, and $\sigma_{xy}$ is the covariance of x and y. C1=(k1L)2, C1=(k1L)2, is a constant used to maintain stability. L is the dynamic range of the pixel value. K1 = 0.01, k2 = 0.03. The structural similarity ranges from 0 to 1. When the two images are identical, the value of SSIM is equal to one.
-```
-
-$SSIM(x,y)=\frac{\left(2\mu_x\mu_y+c1\right)\left(\sigma_{xy}+c2\right)}
-{\left(\mu_x^2+\mu_y^2+c1\right)\left(\sigma_x^2+\sigma_y^2+c2\right)}$
- 
-Where $\mu_x$ is the average of x, $\mu_y$ is the average of y, $\sigma_x^2$ is the variance of x, $\sigma_y^2$ is the variance of y, and $\sigma_{xy}$ is the covariance of x and y. C1=(k1L)2, C1=(k1L)2, is a constant used to maintain stability. L is the dynamic range of the pixel value. K1 = 0.01, k2 = 0.03. The structural similarity ranges from 0 to 1. When the two images are identical, the value of SSIM is equal to one.
