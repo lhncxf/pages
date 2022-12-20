@@ -1026,6 +1026,7 @@ const styles = StyleSheet.create({
 ```
 
 
+
 ```LaTeX
 \begin{equation}
 SSIM(x,y)=\frac{\left(2\mu_x\mu_y+c1\right)\left(\sigma_{xy}+c2\right)}
