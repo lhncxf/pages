@@ -5,10 +5,10 @@ home: true
 ---
 
 # 网站导航
-## [程序](./程序/index.md)
+## [程序](./Program/index.md)
 
-## [学习](./学习/index.md)
+## [学习](./Study/index.md)
 
-## [生活](./生活/index.md)
+## [生活](./Life/index.md)
 
-## [我的简历](./简历/index.md)
+## [我的简历](./Resume/index.md)
