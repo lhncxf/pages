@@ -5,4 +5,4 @@ title: 学习笔记
 
 ## 英语
 
-- [单词本](./英语/word.md)
+- [单词本](./English/word.md)
